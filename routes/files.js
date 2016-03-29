@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-
-module.exports = function(userRepo) {
+var files = function(fileRepo) {
   router.route('/')
-    .get(userRepo.getAllUsers);
+    .get(fileRepo.getAllFiles);
 
   return router;
-};
+}
+
+module.exports = files;

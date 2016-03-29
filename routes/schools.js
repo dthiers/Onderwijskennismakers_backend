@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 
-module.exports = function(userRepo) {
+module.exports = function(schoolRepo) {
   router.route('/')
-    .get(userRepo.getAllUsers);
+    .get(schoolRepo.getAllSchools);
 
   return router;
 };

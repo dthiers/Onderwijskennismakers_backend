@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 
-module.exports = function(userRepo) {
+module.exports = function(communityRepo) {
   router.route('/')
-    .get(userRepo.getAllUsers);
+    .get(communityRepo.getAllCommunities);
 
   return router;
 };

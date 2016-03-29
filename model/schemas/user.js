@@ -6,11 +6,12 @@ module.exports = function(mongoose){
 
   // Schema maken
   var userSchema = new Schema({
-    // Impliciet wordt _id naar Schema.ObjectId
-    firstname:      { type: String, required: true },
-    surname:        { type: String, required: true },
-    surnamePrefix:  { type: String, required: false},
-    email:          {
+    name: {
+      first:    { type: String, required: true},
+      prefix:   { type: String, required: false},
+      last:     { type: String, required: true}
+    },
+    email: {
       type: String,
       required: true,
       unique: true,
@@ -30,7 +31,9 @@ module.exports = function(mongoose){
         },
         message: 'Password must contain 6 or more characters'
       }
-    }
+    },
+    createdAt:      { type: Date, required: true },
+    lastUpdate:     { type: Date}
   })
 
   // Return model from Schema

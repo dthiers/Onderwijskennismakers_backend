@@ -3,6 +3,10 @@ var config = require('../config/config');
 
 
 require('./schemas/user')(mongoose);
+require('./schemas/school')(mongoose);
+require('./schemas/community')(mongoose);
+require('./schemas/rating')(mongoose);
+require('./schemas/file')(mongoose);
 
 
 // TODO: database Initalisation

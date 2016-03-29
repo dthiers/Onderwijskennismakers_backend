@@ -9,16 +9,23 @@ var bodyParser = require('body-parser');
 ====================== OWN STUFF =======================
 */
 
-// database
-//var mongoose = require('mongoose');
-
 // Config + database init
 require('./model/mongooseInit');
-
 
 var UserRepo = require('./model/repositories/userRepository');
 var userRepo = new UserRepo();
 
+var SchoolRepo = require('./model/repositories/schoolRepository');
+var schoolRepo = new SchoolRepo();
+
+var CommunityRepo = require('./model/repositories/communityRepository');
+var communityRepo = new CommunityRepo();
+
+var RatingRepo = require('./model/repositories/ratingRepository');
+var ratingRepo = new RatingRepo();
+
+var FileRepo = require('./model/repositories/fileRepository');
+var fileRepo = new FileRepo();
 
 console.log(userRepo);
 
@@ -26,6 +33,10 @@ console.log(userRepo);
 // Routers
 var index = require('./routes/index');
 var users = require('./routes/users')(userRepo);
+var schools = require('./routes/schools')(schoolRepo);
+var communities = require('./routes/communities')(communityRepo);
+var ratings = require('./routes/ratings')(ratingRepo);
+var files = require('./routes/files')(fileRepo);
 
 /*
 ====================== OWN STUFF =======================
@@ -58,6 +69,10 @@ app.use(function(req, res, next){
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/schools', schools);
+app.use('/communities', communities);
+app.use('/ratings', ratings);
+app.use('/files', files);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

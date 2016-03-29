@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
+var ratings = function(ratingRepo) {
 
-module.exports = function(userRepo) {
   router.route('/')
-    .get(userRepo.getAllUsers);
+    .get(ratingRepo.getAllRatings);
 
   return router;
-};
+}
+
+module.exports = ratings;
