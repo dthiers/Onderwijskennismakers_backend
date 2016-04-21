@@ -1,109 +1,53 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var   express = require('express');                // @use: the framework
 
-/*
-====================== OWN STUFF =======================
-*/
+var   path = require('path'),                     // @use: to serve static files
+      favicon = require('serve-favicon'),         // @use: to avoid 'no-favicon' error
+      logger = require('morgan'),                 // @use: console logger
+      cookieParser = require('cookie-parser'),    // @use: used to parse cookies in the req.header
+      bodyParser = require('body-parser'),
 
-// Config + database init
-require('./model/mongooseInit');
+      newsql = require('newsql'),                 // @use: DATABASE CONFIGURATION
+      handlebars = require('express-handlebars'), // @use: templating engine
+      cors = require('cors'),
 
-var UserRepo = require('./model/repositories/userRepository');
-var userRepo = new UserRepo();
+      config = require('./config/config')(),
+      Database = require('./config/database');
 
-var SchoolRepo = require('./model/repositories/schoolRepository');
-var schoolRepo = new SchoolRepo();
+console.log(config);
+// Call inits
+var   app = express(),                              // Start app
+      db = new Database(newsql, config);            // Init database
 
-var CommunityRepo = require('./model/repositories/communityRepository');
-var communityRepo = new CommunityRepo();
-
-var RatingRepo = require('./model/repositories/ratingRepository');
-var ratingRepo = new RatingRepo();
-
-var FileRepo = require('./model/repositories/fileRepository');
-var fileRepo = new FileRepo();
-
-console.log(userRepo);
-
-
-// Routers
-var index = require('./routes/index');
-var users = require('./routes/users')(userRepo);
-var schools = require('./routes/schools')(schoolRepo);
-var communities = require('./routes/communities')(communityRepo);
-var ratings = require('./routes/ratings')(ratingRepo);
-var files = require('./routes/files')(fileRepo);
-
-/*
-====================== OWN STUFF =======================
-*/
-
-var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+  app.set('views', path.join(__dirname, 'views'));
+  app.engine(
+    'hbs',
+    handlebars({ defaultLayout: 'main', extname: '.hbs'
+  }));
+  app.set('view engine', 'hbs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+  // App uses
+  app.use(logger('dev'));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({
+    extended: false
+  }));
+  app.use(cookieParser());
 
-// Make DB accessibly to our router
-app.use(function(req, res, next){
-  //req.db = mongoose;
 
-  // TESTING PURPOSES
-  req.user = { username: "Dion Thiers"};
-  // TESTING PURPOSES
+  app.use(cors());
 
-  next();
-})
+  // Allow serving of static files from ./public
+  app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/schools', schools);
-app.use('/communities', communities);
-app.use('/ratings', ratings);
-app.use('/files', files);
+  app.use(require('./lib/modules/returnHandler'));
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
 
-// error handlers
+// Routes from a seperate module
+require('./lib/modules/routeHandler')(app, db);
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
-
+// ErrHandling from a seperate module
+require('./lib/modules/errorHandler')(app);
 
 module.exports = app;

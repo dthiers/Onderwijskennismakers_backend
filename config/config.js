@@ -1,11 +1,34 @@
-var config = {}
+module.exports = function(){
 
-config.someConfig = {
-  test: "Test"
+  var config = {};
+
+  // Database config
+  config.database = {
+    dbConfig: {
+        "host"     : "127.0.0.1",
+        "database" : "API_Test",
+        "user"     : "root",
+        "password" : "root",
+        "port"     : 8889,
+        "supportBigNumbers" : true,
+        "connectionLimit"   : 32
+    },
+    "autoConvert": true
+  }
+
+  //Database config to connect to database hosted on aii.avans.nl
+  config.databaseTijn = {
+    dbConfig: {
+      "host"      : "databases.aii.avans.nl",
+      "database"  : "trkanter_db2",
+      "user"      : "trkanter",
+      "password"  : "Ab12345",
+      "post"      : 3306,
+      "supportBigNumbers" : true,
+      "connectionLimit"   : 32
+    },
+    "autoConvert" : true
+  }
+
+  return config;
 }
-
-config.db = {
-  connection: "mongodb://localhost:27017/onderwijskennismakers"
-}
-
-module.exports = config;
