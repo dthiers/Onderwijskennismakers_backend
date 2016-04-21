@@ -6,7 +6,8 @@ module.exports = function(newsql, config){
 
   // Repository paths. Name used as key to reference the repository.
   var repositoryPaths = [
-    { name: "user", path: "../lib/repositories/userRepository" }
+    { name: "user", path: "../lib/repositories/userRepository" },
+    { name: "community", path: "../lib/repositories/communityRepository"}
   ]
 
   self.initRepositories = function(){
