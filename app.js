@@ -7,6 +7,7 @@ var   path = require('path'),                     // @use: to serve static files
       bodyParser = require('body-parser'),
 
       newsql = require('newsql'),                 // @use: DATABASE CONFIGURATION
+      mysql  = require('mysql'),
       handlebars = require('express-handlebars'), // @use: templating engine
       cors = require('cors'),
 
@@ -16,7 +17,7 @@ var   path = require('path'),                     // @use: to serve static files
 
 // Call inits
 var   app = express(),                              // Start app
-      db = new Database(newsql, config);            // Init database
+      db = new Database(mysql, config);            // Init database
 
 // view engine setup
   app.set('views', path.join(__dirname, 'views'));

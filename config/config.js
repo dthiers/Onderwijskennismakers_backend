@@ -29,6 +29,18 @@ module.exports = function(){
     },
     "autoConvert" : true
   }
+  
+  config.databaseMySQL = {
+    dbConfig: {
+      "connectionLimit" : "100",
+      "host"      : "databases.aii.avans.nl",
+      "user"      : "trkanter",
+      "password"  : "Ab12345",
+      "database"  : "trkanter_db2",
+      "debug"     : false
+    },
+    "autoConvert" : true
+  }
 
   return config;
 }

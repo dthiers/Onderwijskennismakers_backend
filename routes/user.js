@@ -6,8 +6,7 @@ module.exports = function(userRepo){
 
   router.route('/')
     .get(userRepo.baseRepo.getAll)
-    .put(userRepo.baseRepo.updateById)
-    .post(userRepo.createUser);
+    .post(userRepo.baseRepo.create);
 
   router.route('/:id')
     .get(userRepo.baseRepo.getById)

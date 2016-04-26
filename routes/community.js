@@ -6,7 +6,7 @@ module.exports = function(communityRepo){
 
   router.route('/')
     .get(communityRepo.baseRepo.getAll)
-    .post(communityRepo.createCommunity);
+    .post(communityRepo.baseRepo.create);
 
   router.route('/:id')
     .get(communityRepo.baseRepo.getById)
