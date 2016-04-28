@@ -1,8 +1,58 @@
-<ul>
-  {{#each data}}
-    <li>
-      {{firstName}} {{lastName}}
-    </li>
+<style>
+  .data-table {
+    //border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .data-table th {
+    color: red;
+    padding: 30px;
+  }
+  .data-table td {
+    border: 1px solid lightpink;
+    padding: 5px;
+  }
+  .headers {
+    font-weight: bold;
+    line-height: 50px;
+  }
+</style>
 
+<!-- Success header -->
+{{#if data.success}}
+  <div class="headers">
+    <span class="headers">Request success: </span>{{data.success}}
+    <hr />
+  </div>
+{{/if}}
+
+<!-- Message header -->
+{{#if data.message}}
+  <div class="headers">
+    <span class="headers">Message: </span>{{data.message}}
+    <hr />
+  </div>
+{{/if}}
+
+<!-- Generic table to load headers in object + fill the values for each object in data.data -->
+<table class="data-table">
+  <!-- Table header with keys from JSON -->
+  <tr>
+      {{#each data.data.[0]}}
+        <th>
+          {{@key}}
+        </th>
+      {{/each}}
+  </tr>
+
+  <!-- Table body with rows with information -->
+  {{#each data.data}}
+    <tr>
+      {{#each this}}
+        <td>
+          {{this}}
+        </td>
+      {{/each}}
+    </tr>
   {{/each}}
-</ul>
+</table>
