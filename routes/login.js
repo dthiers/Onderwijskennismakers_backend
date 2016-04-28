@@ -33,6 +33,34 @@ module.exports = function(passport){
   * TODO: do this.
   *
   **/
+  router.route('/jwt')
+    // '/login/jwt' POST
+
+    .post(function(req, res, next) {
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      // TODO: NOT WORKING
+      console.log(passport.JwtStrategy);
+      res.return(req.jwt, 'data', 'je mama');
+    })
+
+    // 'login/jwt' GET
+    .get(function(req, res, next) {
+      res.json('Je mama');
+    });
 
 
   return router;

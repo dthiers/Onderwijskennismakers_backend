@@ -29,7 +29,7 @@ module.exports = function(){
     },
     "autoConvert" : true
   }
-  
+
   config.databaseMySQL = {
     dbConfig: {
       "connectionLimit" : "100",
@@ -40,6 +40,10 @@ module.exports = function(){
       "debug"     : false
     },
     "autoConvert" : true
+  }
+
+  config.secret = {
+    jwt: "secretitytityity"
   }
 
   return config;

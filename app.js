@@ -48,7 +48,7 @@ var   app = express(),                              // Start app
 
 
 // Passport
-require('./lib/modules/passport/passportModule')(passport, db.repositories.user, app);
+require('./lib/modules/passport/passportModule')(passport, db.repositories.user, app, config);
                               // TODO: require express in app.js and inject into routeHandler
                               // TODO: require express in app.js and inject into routeHandler
                               // TODO: require express in app.js and inject into routeHandler
