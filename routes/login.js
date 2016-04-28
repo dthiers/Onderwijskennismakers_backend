@@ -19,7 +19,12 @@ module.exports = function(passport){
   router.route('/local')
     // '/local/login' POST to login
     .post(passport.authenticate('local'), function(req, res, next) {
-      res.return(req.user, 'data', 'je moeder');
+      //res.return(req.user, 'data', 'je moeder');
+      res.json({
+        data: req.user,
+        success: true,
+        message: 'Success dr mee'
+      })
     })
     // '/login/local' GET
     .get(function(req, res, next){
