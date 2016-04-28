@@ -35,24 +35,26 @@
 {{/if}}
 
 <!-- Generic table to load headers in object + fill the values for each object in data.data -->
-<table class="data-table">
-  <!-- Table header with keys from JSON -->
-  <tr>
-      {{#each data.data.[0]}}
-        <th>
-          {{@key}}
-        </th>
-      {{/each}}
-  </tr>
-
-  <!-- Table body with rows with information -->
-  {{#each data.data}}
+{{#if data.data}}
+  <table class="data-table">
+    <!-- Table header with keys from JSON -->
     <tr>
-      {{#each this}}
-        <td>
-          {{this}}
-        </td>
-      {{/each}}
+        {{#each data.data.[0]}}
+          <th>
+            {{@key}}
+          </th>
+        {{/each}}
     </tr>
-  {{/each}}
-</table>
+
+    <!-- Table body with rows with information -->
+    {{#each data.data}}
+      <tr>
+        {{#each this}}
+          <td>
+            {{this}}
+          </td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </table>
+{{/if}}
