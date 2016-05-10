@@ -8,7 +8,8 @@ module.exports = function(mysql, config) {
     // Repository paths. Name used as key to reference the repository.
     var repositoryPaths = [
         { name: "user", path: "../lib/repositories/userRepository" },
-        { name: "community", path: "../lib/repositories/communityRepository" }
+        { name: "community", path: "../lib/repositories/communityRepository" },
+        { name: "keyword", path: "../lib/repositories/keywordRepository" }
     ]
 
     self.initRepositories = function() {
