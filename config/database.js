@@ -9,7 +9,7 @@ module.exports = function(mysql, config) {
     var repositoryPaths = [
         { name: "user", path: "../lib/repositories/userRepository" },
         { name: "community", path: "../lib/repositories/communityRepository" },
-        { name: "keyword", path: "../lib/repositories/keywordRepository" }
+        { name: "keyword", path: "../lib/repositories/keywordRepository" },
     ]
 
     self.initRepositories = function() {

@@ -12,6 +12,9 @@ module.exports = function(userRepo){
     .get(userRepo.baseRepo.getById)
     .put(userRepo.baseRepo.updateById)
     .delete(userRepo.baseRepo.deleteById);
+    
+  router.route('/:id/getWeb')
+    .get(userRepo.getWeb);
 
   return router;
 }
