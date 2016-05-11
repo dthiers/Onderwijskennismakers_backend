@@ -13,7 +13,7 @@ module.exports = function(userRepo){
     .put(userRepo.baseRepo.updateById)
     .delete(userRepo.baseRepo.deleteById);
     
-  router.route('/:id/getWeb')
+  router.route('/:id/web')
     .get(userRepo.getWeb);
 
   return router;
