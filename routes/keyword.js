@@ -12,6 +12,9 @@ module.exports = function(keywordRepo){
     .get(keywordRepo.baseRepo.getById)
     .put(keywordRepo.baseRepo.updateById)
     .delete(keywordRepo.baseRepo.deleteById);
+    
+  router.route('/:id/web')
+    .get(keywordRepo.getWeb);
 
   return router;
 }
