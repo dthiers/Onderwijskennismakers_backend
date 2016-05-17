@@ -15,6 +15,9 @@ module.exports = function(keywordRepo){
     
   router.route('/:id/web')
     .get(keywordRepo.getWeb);
+    
+  router.route('/:id/tags')
+    .get(keywordRepo.getTags);
 
   return router;
 }
