@@ -10,7 +10,8 @@ var router = express.Router();
 module.exports = function(registrationRepo) {
 
   //
-  Router.route('/')
+  router.route('/')
+    .get(registrationRepo.test)
     .post(registrationRepo.registerUser);
 
   return router;

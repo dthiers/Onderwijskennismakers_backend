@@ -2,16 +2,19 @@
 module.exports = function(mysql, config) {
     var self = this;
 
+    var repoDir = "../lib/repositories/";
+
     // Create the pool to make connections in the repo's
     var pool = mysql.createPool(config.databaseMySQL.dbConfig);
-    
+
     // Repository paths. Name used as key to reference the repository.
     var repositoryPaths = [
-        { name: "user", path: "../lib/repositories/userRepository" },
-        { name: "community", path: "../lib/repositories/communityRepository" },
-        { name: "school", path: "../lib/repositories/schoolRepository"},
-        { name: "keyword", path: "../lib/repositories/keywordRepository" },
-        { name: "content", path: "../lib/repositories/contentRepository"}
+        { name: "user",           path: repoDir + "userRepository" },
+        { name: "community",      path: repoDir + "communityRepository" },
+        { name: "school",         path: repoDir + "schoolRepository"},
+        { name: "keyword",        path: repoDir + "keywordRepository" },
+        { name: "content",        path: repoDir + "contentRepository"},
+        { name: "register",       path: repoDir + "registrationRepository"}
     ]
 
     self.initRepositories = function() {
