@@ -28,7 +28,7 @@ module.exports = function(passport){
     })
     // '/login/local' GET
     .get(function(req, res, next){
-      res.json('Je moeder');
+      res.json('Je moeder, Niels1');
     });
 
   /**
