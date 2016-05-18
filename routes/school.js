@@ -13,5 +13,8 @@ module.exports = function(schoolRepo){
     .put(schoolRepo.baseRepo.updateById)
     .delete(schoolRepo.baseRepo.deleteById);
 
+  router.route('/:id/experts')
+    .get(schoolRepo.getExperts);
+    
   return router;
 }
