@@ -18,6 +18,9 @@ module.exports = function(userRepo){
     
   router.route('/:id/details')
     .get(userRepo.getDetails);
+  
+  router.route('/:id/content')
+    .get(userRepo.getContent);
 
   return router;
 }
