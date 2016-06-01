@@ -1,9 +1,9 @@
 
 // User
 {
-  "firstName": "firstname",
-  "lastName" : "lastname",
-  "email": "email",
+  "firstName":"firstname",
+  "lastName":"lastname",
+  "email":"email",
   "password" : "password",
   "functionDescription" : "function description",
   "profileImage": "profile image",
