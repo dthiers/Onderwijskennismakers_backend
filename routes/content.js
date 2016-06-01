@@ -12,6 +12,9 @@ module.exports = function(contentRepo){
     .get(contentRepo.baseRepo.getById)
     .put(contentRepo.baseRepo.updateById)
     .delete(contentRepo.baseRepo.deleteById);
+    
+  router.route('/:id/tags')
+    .get(contentRepo.getTags);
 
   return router;
 }
