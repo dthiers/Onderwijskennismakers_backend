@@ -13,8 +13,8 @@ module.exports = function(tagRepo){
     .put(tagRepo.baseRepo.updateById)
     .delete(tagRepo.baseRepo.deleteById);
     
-  router.route('/search?query=')
-    .get(tagRepo.getTags);
+//   router.route('/search?query=')
+//     .get(tagRepo.getTags);
 
   return router;
 }

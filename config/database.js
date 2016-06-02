@@ -15,7 +15,8 @@ module.exports = function(mysql, config) {
         { name: "keyword",        path: repoDir + "keywordRepository" },
         { name: "content",        path: repoDir + "contentRepository"},
         { name: "register",       path: repoDir + "registrationRepository"},
-        { name: "search",         path: repoDir + "searchRepository"}
+        { name: "search",         path: repoDir + "searchRepository"},
+        { name: "tag",            path: repoDir + "tagRepository"}
     ]
 
     self.initRepositories = function() {
