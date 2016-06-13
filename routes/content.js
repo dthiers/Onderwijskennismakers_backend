@@ -14,7 +14,9 @@ module.exports = function(contentRepo){
     .delete(contentRepo.baseRepo.deleteById);
     
   router.route('/:id/tags')
-    .get(contentRepo.getTags);
+    .get(contentRepo.getTags)
+    .post(contentRepo.addTag)
+    .delete(contentRepo.deleteTagById);
 
   return router;
 }
