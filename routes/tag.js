@@ -5,7 +5,7 @@ var router = express.Router();
 module.exports = function(tagRepo){
 
   router.route('/')
-    .get(tagRepo.baseRepo.getAll)
+    .get(tagRepo.getAll)
     .post(tagRepo.baseRepo.create);
 
   router.route('/:id')
