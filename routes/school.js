@@ -15,6 +15,9 @@ module.exports = function(schoolRepo){
 
   router.route('/:id/experts')
     .get(schoolRepo.getExperts);
+
+  router.route('/:id/web')
+      .get(schoolRepo.getWeb);
     
   return router;
 }
