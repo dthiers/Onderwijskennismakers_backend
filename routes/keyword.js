@@ -18,7 +18,9 @@ module.exports = function(keywordRepo){
     
   router.route('/:id/tags')
     .get(keywordRepo.getTags)
-    .post(keywordRepo.addTag)
+    .post(keywordRepo.addTag);
+
+  router.route('/:id/tags/:tag_id')
     .delete(keywordRepo.deleteTagById);
 
   return router;
