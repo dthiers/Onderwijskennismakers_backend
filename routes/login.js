@@ -20,6 +20,7 @@ module.exports = function(passport){
     // '/local/login' POST to login
     .post(passport.authenticate('local'), function(req, res, next) {
       //res.return(req.user, 'data', 'je moeder');
+      console.log("test");
       res.json({
         data: req.user,
         success: true,
