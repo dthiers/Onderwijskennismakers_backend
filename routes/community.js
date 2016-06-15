@@ -12,6 +12,9 @@ module.exports = function(communityRepo){
     .get(communityRepo.baseRepo.getById)
     .put(communityRepo.baseRepo.updateById)
     .delete(communityRepo.baseRepo.deleteById);
+    
+  router.route('/:id/moderator')
+    .get(communityRepo.getModerator);
 
   return router;
 }
