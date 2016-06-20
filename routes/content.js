@@ -13,12 +13,12 @@ module.exports = function(contentRepo){
     .put(contentRepo.baseRepo.updateById)
     .delete(contentRepo.baseRepo.deleteById);
     
-  router.route('/:id/tags')
-    .get(contentRepo.getTags)
-    .post(contentRepo.addTag);
+  router.route('/:id/keywords')
+    .get(contentRepo.getKeywords)
+    .post(contentRepo.addKeyword);
     
-  router.route('/:id/tags/:tag_id')
-    .delete(contentRepo.deleteTagById);
+  router.route('/:id/keywords/:keyword_id')
+    .delete(contentRepo.deleteKeywordById);
 
   return router;
 }
