@@ -10,7 +10,7 @@ module.exports = function(userRepo){
     .post(userRepo.baseRepo.create);
 
   router.route('/:id')
-    .get(userRepo.baseRepo.getById)
+    .get(userRepo.getById)
     .put(userRepo.baseRepo.updateById)
     .delete(userRepo.baseRepo.deleteById);
 
