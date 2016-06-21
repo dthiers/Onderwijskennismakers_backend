@@ -19,10 +19,14 @@ module.exports = function(schoolRepo){
   router.route('/:id/experts')
     .get(schoolRepo.getExperts)
     .post(schoolRepo.addExpert)
+    
+  router.route('/:id/experts/:user_id')
+    .put(schoolRepo.updateExpert)
+    .delete(schoolRepo.deleteExpert);
       
   router.route('/:id/principal')
     .get(schoolRepo.getPrincipal)
-    .post(schoolRepo.setPrincipal);     
+    .post(schoolRepo.setPrincipal);
     
   return router;
 }
