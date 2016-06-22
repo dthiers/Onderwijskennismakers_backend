@@ -9,8 +9,9 @@
 var express = require('express');
 var router = express.Router();
 
-module.exports = function(passport){
-    var jwt = require('jwt-simple');
+module.exports = function(passport, passportModule){
+    var jwt     = require('jwt-simple'),
+        moment  = require('moment');
   /**
   *
   * Route for LocalStategy login
@@ -19,19 +20,20 @@ module.exports = function(passport){
   router.route('/local')
     // '/local/login' POST to login
     .post(passport.authenticate('local'), function(req, res, next) {
-       
-        // TODO: hier een JWT token aanmaken en die terug sturen naar de user
-        var token = jwt.encode({
-            id: req.user.id,
-            username: req.user.firstName
-        }, 'secret');
-        
-        console.log(req.user);
-       
-      //res.return(req.user, 'data', 'je moeder');
+
+        // var exp = moment().add(7, 'days').valueOf(); // Valid for 7 days
+        //
+        // // TODO: hier een JWT token aanmaken en die terug sturen naar de user
+        // var token = jwt.encode({
+        //     issuer: req.user[0].email,
+        //     expires: exp
+        // }, 'secret');
+        //
+        // console.log(jwt.decode(token, 'secret'));
+
       res.json({
         data: req.user,
-        token: token,
+        token: req.token,
         success: true,
         message: 'Success dr mee'
       })
